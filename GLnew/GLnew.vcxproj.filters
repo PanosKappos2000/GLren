@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Camera">
+      <UniqueIdentifier>{CE7141AB-BA13-6C81-A3CE-7FD58F0FF3D1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{8AA33B53-7670-965E-9F89-84068BB5CBEC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lighting">
+      <UniqueIdentifier>{5B1EC029-47EB-1A35-7004-09DD5C3050C3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Materials">
+      <UniqueIdentifier>{67E8C255-D352-77CC-1C91-2872883A5521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{7CCE658F-689B-C09A-91B4-AE427DE0F528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{FC0C0CD1-E8AE-36A7-D169-4AFBBDAABDF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{76AD313A-E28C-B0D5-EBA4-3BAC57031737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{3DEA79DA-298C-A4B0-1247-B804FE872B01}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Camera\camera.h">
+      <Filter>Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Mesh.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\Model.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\cube.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Entities\entity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lighting\DirectionalLight.h">
+      <Filter>Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lighting\FlashLight.h">
+      <Filter>Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lighting\PointLight.h">
+      <Filter>Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lighting\SkyLight.h">
+      <Filter>Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lighting\SpotLight.h">
+      <Filter>Lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials\Material.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\Renderer.h">
+      <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Shader\Shader.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture\stb.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Texture\texture.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window\glfwCallbacks.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window\window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Memory\Memory.h" />
+    <ClInclude Include="src\Entities\Vegetation.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Camera\camera.cpp">
+      <Filter>Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Entity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Mesh.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\Model.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Entities\cube.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lighting\DirectionalLight.cpp">
+      <Filter>Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lighting\Flashlight.cpp">
+      <Filter>Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lighting\PointLight.cpp">
+      <Filter>Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lighting\SkyLight.cpp">
+      <Filter>Lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Materials\Material.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\Renderer.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shader\Shader.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\Texture\texture.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window\glfwCallbacks.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window\window.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Memory\Memory.cpp" />
+    <ClCompile Include="src\Entities\Vegetation.cpp" />
+  </ItemGroup>
+</Project>

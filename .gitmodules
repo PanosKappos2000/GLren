@@ -1,0 +1,9 @@
+[submodule "GLnew/ExternalVendors/GLFW"]
+	path = GLnew/ExternalVendors/GLFW
+	url = https://github.com/PanosKappos2000/glfw
+[submodule "GLnew/ExternalVendors/glm"]
+	path = GLnew/ExternalVendors/glm
+	url = https://github.com/g-truc/glm
+[submodule "GLnew/ExternalVendors/assimp"]
+	path = GLnew/ExternalVendors/assimp
+	url = https://github.com/assimp/assimp
