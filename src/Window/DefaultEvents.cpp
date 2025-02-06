@@ -1,5 +1,6 @@
 #include "Events.h"
 #include "window.h"
+#include "Camera/camera.h"
 
 void RegisterDefaultEvents()
 {
@@ -40,29 +41,25 @@ uint8_t OnKeyPress(BlitEventType eventType, void* pSender, void* pListener, Even
             case BlitKey::__W:
             {
                 Camera* pCamera = Camera::GetCamera();
-                /*pCamera->cameraDirty = 1;
-                pCamera->velocity = glm::vec3(0.f, 0.f, 1.f);*/
+                pCamera->movement = CameraMovement::Forward;
                 break;
             }
             case BlitKey::__S:
             {
                 Camera* pCamera = Camera::GetCamera();
-                /*pCamera->cameraDirty = 1;
-                pCamera->velocity = glm::vec3(0.f, 0.f, -1.f);*/
+                pCamera->movement = CameraMovement::Backward;
                 break;
             }
             case BlitKey::__A:
             {
                 Camera* pCamera = Camera::GetCamera();
-                /*pCamera->cameraDirty = 1;
-                pCamera->velocity = glm::vec3(-1.f, 0.f, 0.f);*/
+                pCamera->movement = CameraMovement::Left;
                 break;
             }
             case BlitKey::__D:
             {
                 Camera* pCamera = Camera::GetCamera();
-                /*pCamera->cameraDirty = 1;
-                pCamera->velocity = glm::vec3(1.f, 0.f, 0.f);*/
+                pCamera->movement = CameraMovement::Right;
                 break;
             }
             default:
@@ -77,24 +74,15 @@ uint8_t OnKeyPress(BlitEventType eventType, void* pSender, void* pListener, Even
         {
             case BlitKey::__W:
             case BlitKey::__S:
-            {
-                Camera* pCamera = Camera::GetCamera();
-                /*pCamera->velocity.z = 0.f;
-                if(pCamera->velocity.y == 0.f && pCamera->velocity.x == 0.f)
-                {
-                    pCamera->cameraDirty = 0;
-                }*/
-                break;
-            }
             case BlitKey::__A:
             case BlitKey::__D:
             {
                 Camera* pCamera = Camera::GetCamera();
-                /*pCamera->velocity.x = 0.f;
-                if (pCamera->velocity.y == 0.f && pCamera->velocity.z == 0.f)
-                {
-                    pCamera->cameraDirty = 0;
-                }*/
+                pCamera->movement = CameraMovement::None;
+                break;
+            }
+            default:
+            {
                 break;
             }
         }
@@ -108,6 +96,7 @@ uint8_t OnResize(BlitEventType eventType, void* pSender, void* pListener, EventC
     uint32_t newHeight = data.data.ui32[1];
 
     glViewport(0, 0, newWidth, newHeight);
+    Camera::GetCamera()->UpdatePerspective();
 
     return 1;
 }
@@ -117,8 +106,8 @@ uint8_t OnMouseMove(BlitEventType eventType, void* pSender, void* pListener, Eve
     Camera& camera = *(Camera::GetCamera());
     float deltaTime = static_cast<float>(GetDeltaTime());
 
-    /*camera.cameraDirty = 1;
-    RotateCamera(camera, deltaTime, data.data.si16[1], data.data.si16[0]);*/
+    
+    camera.Rotate(data.data.si16[0], data.data.si16[1]);
 
     return 1;
 }

@@ -1,4 +1,4 @@
-#include "Window/window.h"
+#include "Camera/camera.h"
 #include "Window/Events.h"
 #include "Shader/Shader.h"
 #include "Entities/cube.h"
@@ -8,23 +8,28 @@
 
 int main()
 {
+	// Start the event and input systems (ported from BlitzenEngine0, constructor does all the work)
 	EventSystemState eventSystem;
 	InputSystemState inputSystem;
 
+	// Create the window and the opengl draw context
 	PlatformStartup("GLren", 100, 100, 1280, 768);
 	CreateOpenglDrawContext();
 
+	// Register default event like window closing and camera movement
 	RegisterDefaultEvents();
 
+	// Allocate the camera with a unique pointer
 	std::unique_ptr<Camera> camera = std::make_unique<Camera>(sizeof(Camera));
 
+	// Allocate the renderer with a unique pointer and compile the required shaders
 	std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>();
 	Shader::Init();
 
-	std::make_unique<RotatingCube>("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png", glm::vec3(0.0f, 0.0f, 0.0f));
-
+	// Reserve space for the entities that will be allocated
 	renderer->ReserveEntities(15);
+
+	// Add rotating cubes
 	renderer->AddRotatingCube("Assets/Textures/Container.png",
 		"Assets/Textures/Container_specular.png",glm::vec3(0.0f, 0.0f, 0.0f));
 	renderer->AddRotatingCube("Assets/Textures/Container.png",
@@ -44,12 +49,14 @@ int main()
 	renderer->AddRotatingCube("Assets/Textures/Container.png",
 		"Assets/Textures/Container_specular.png",glm::vec3(0.7f, 3.9f, -6.3f));
 
+	// Add light cubes
 	renderer->AddLightCube();
 	renderer->AddLightCube(glm::vec3(8.0f, 6.0f, -4.0f));
 	renderer->AddLightCube(glm::vec3(8.0f, 6.0f, -8.0f));
 	renderer->AddLightCube(glm::vec3(-8.0f, 6.0f, -4.0f));
 	renderer->AddLightCube(glm::vec3(-8.5f, 6.0f, -8.0f));
 
+	// Give materials to the rotating cubes
 	Material mat1(MaterialType::MT_BlackPlastic);
 	renderer->GetRotatingCube(2)->SetMaterial(mat1);
 	Material mat2(MaterialType::MT_Ruby);
@@ -69,47 +76,35 @@ int main()
 	Material mat9(MaterialType::MT_Pearl);
 	renderer->GetRotatingCube(10)->SetMaterial(mat9);
 
-	unsigned int shadowFramebufferTag;
-	glGenFramebuffers(1, &shadowFramebufferTag);
+	// Set the viewport and enable depth testing
+	glViewport(0, 0, GetWindowWidth(), GetWindowHeight());
+	glEnable(GL_DEPTH_TEST);
 
-	unsigned int depthMapTextureTag;
-	glGenTextures(1, &depthMapTextureTag);
-	glActiveTexture(GL_TEXTURE0 + 30);
-	glBindTexture(GL_TEXTURE_2D, depthMapTextureTag);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, 1024, 1024, 0,
-		GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-	glBindFramebuffer(GL_FRAMEBUFFER, shadowFramebufferTag);
-	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMapTextureTag, 0);
-	glDrawBuffer(GL_NONE);
-	glReadBuffer(GL_NONE);
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
+	// Set the clock to use delta time
 	ClockSet();
 
+	// Start the game loop
 	while (GetRunningState())
 	{
+		// Checking for events
 		if(!PlatformPumpMessages())
 			SetRunningState(0);
 
+		// Update delta time
 		UpdateTime();
 
-		glClearColor(0.f, 0.4f, 0.6f, 1.f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		// Update the camera
+		camera->Update();
 
-		glViewport(0, 0, 1024, 1024);
-		glBindFramebuffer(GL_FRAMEBUFFER, shadowFramebufferTag);
-		glClear(GL_DEPTH_BUFFER_BIT);
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		// Clear the color and depth buffers
+		glClearColor(0.f, 0.4f, 0.8f, 1.f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glViewport(0, 0, GetWindowWidth(), GetWindowHeight());
-
+		// Draw
 		renderer->OnUpdate();
 		renderer->Draw();
+
+		// Swap buffers
 		OpenglSwapBuffers();
 	}
 

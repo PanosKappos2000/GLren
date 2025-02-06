@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Camera/camera.h"
 #include "Entities/cube.h"
 
 #define GLFW_COLOR_RED		0.0f

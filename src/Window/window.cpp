@@ -272,7 +272,7 @@ uint8_t CreateOpenglDrawContext()
 
 void OpenglSwapBuffers()
 {
-    wglSwapIntervalEXT(1);
+    wglSwapIntervalEXT(0);
     wglSwapLayerBuffers(GetDC(s_pPlatformState.winWindow), WGL_SWAP_MAIN_PLANE);
 }
 

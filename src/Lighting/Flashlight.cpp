@@ -1,4 +1,5 @@
 #include "FlashLight.h"
+#include "Camera/camera.h"
 
 Flashlight::Flashlight(const glm::vec3& position, const glm::vec3& direction,
 	float innerCutoff, float outerCutoff, const glm::vec3& amb, 

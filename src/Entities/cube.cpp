@@ -1,5 +1,5 @@
 #include "cube.h"
-#include "Window/window.h"
+#include "Camera/camera.h"
 #include "Renderer/Renderer.h"
 
 RotatingCube::RotatingCube(const char* innerTextureFilepath,
@@ -102,11 +102,8 @@ void RotatingCube::OnUpdate()
 	view = Camera::GetCamera()->GetLookAt();
 	glm::mat4 model(1.0f);
 	model = glm::translate(model, m_position);
-	/*glm::vec3 dir = glm::normalize(glm::vec3(0.0f, 1.0f, 0.0f));
-	glm::vec3 move = 0.01f * dir;
-	m_position += move;*/
-	model = glm::rotate(model,
-		glm::radians(m_rotationSpeed * float(GetDeltaTime())), glm::vec3(1.0f, 1.0f, 1.0f));
+	glm::vec3 dir = glm::normalize(glm::vec3(0.0f, 1.0f, 0.0f));
+	model = glm::rotate(model, glm::radians(m_rotationSpeed * float(GetDeltaTime())), glm::vec3(1.0f, 1.0f, 1.0f));
 
 	//Shader::GetRotatingCubeShader()->SetUniformMatrix3D("Scale", glm::mat4(2.0f));
 
