@@ -40,6 +40,9 @@
     <ClCompile Include="C:\Dev\CMake++\GLren\src\Window\Events.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Dev\CMake++\GLren\src\Window\DefaultEvents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Dev\CMake++\GLren\src\Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

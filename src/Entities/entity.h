@@ -34,8 +34,9 @@ struct Tex
 class Entity
 {
 public:
-	virtual void OnUpdate() = 0;
-	virtual void Draw() = 0;
+	virtual void OnUpdate();
+	
+	virtual void Draw();
 };
 
 

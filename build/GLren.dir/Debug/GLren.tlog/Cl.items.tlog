@@ -11,4 +11,5 @@ C:\Dev\CMake++\GLren\src\Shader\Shader.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\
 C:\Dev\CMake++\GLren\src\Texture\texture.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\texture.obj
 C:\Dev\CMake++\GLren\src\Window\window.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\window.obj
 C:\Dev\CMake++\GLren\src\Window\Events.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Events.obj
+C:\Dev\CMake++\GLren\src\Window\DefaultEvents.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\DefaultEvents.obj
 C:\Dev\CMake++\GLren\src\Source.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Source.obj

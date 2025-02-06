@@ -128,7 +128,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory $&lt;TARGET_FILE_DIR:GLren/Assets
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Dev/CMake++/GLren/build/Debug/Assets
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Dev/CMake++/GLren/build/Assets &lt;TARGET_FILE_DIR:GLren&gt;/Assets
 if %errorlevel% neq 0 goto :cmEnd
@@ -197,7 +197,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory $&lt;TARGET_FILE_DIR:GLren/Assets
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Dev/CMake++/GLren/build/Release/Assets
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Dev/CMake++/GLren/build/Assets &lt;TARGET_FILE_DIR:GLren&gt;/Assets
 if %errorlevel% neq 0 goto :cmEnd
@@ -266,7 +266,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory $&lt;TARGET_FILE_DIR:GLren/Assets
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Dev/CMake++/GLren/build/MinSizeRel/Assets
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Dev/CMake++/GLren/build/Assets &lt;TARGET_FILE_DIR:GLren&gt;/Assets
 if %errorlevel% neq 0 goto :cmEnd
@@ -334,7 +334,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd
 setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory $&lt;TARGET_FILE_DIR:GLren/Assets
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Dev/CMake++/GLren/build/RelWithDebInfo/Assets
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Dev/CMake++/GLren/build/Assets &lt;TARGET_FILE_DIR:GLren&gt;/Assets
 if %errorlevel% neq 0 goto :cmEnd
@@ -444,6 +444,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="C:\Dev\CMake++\GLren\src\Window\window.h" />
     <ClCompile Include="C:\Dev\CMake++\GLren\src\Window\Events.cpp" />
     <ClInclude Include="C:\Dev\CMake++\GLren\src\Window\Events.h" />
+    <ClCompile Include="C:\Dev\CMake++\GLren\src\Window\DefaultEvents.cpp" />
     <ClCompile Include="C:\Dev\CMake++\GLren\src\Source.cpp" />
   </ItemGroup>
   <ItemGroup>

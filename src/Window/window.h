@@ -15,6 +15,8 @@ double PlatformGetAbsoluteTime();
 
 void PlatformSleep(uint64_t ms);
 
+uint8_t PlatformPumpMessages();
+
 uint8_t CreateOpenglDrawContext();
 
 void OpenglSwapBuffers();
@@ -24,3 +26,12 @@ double GetDeltaTime();
 void ClockSet();
 
 void UpdateTime();
+
+uint8_t GetRunningState();
+void SetRunningState(uint8_t set);
+
+unsigned int GetWindowWidth();
+void SetWindowWidth(unsigned int width);
+
+unsigned int GetWindowHeight();
+void SetWindowHeight(unsigned int height);

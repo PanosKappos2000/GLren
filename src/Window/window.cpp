@@ -9,6 +9,9 @@
 // Necessary for some wgl function pointers
 #include <GL/wglew.h>
 
+#define GLREN_WINDOW_WIDTH            1280
+#define GLREN_WINDOW_HEIGHT           768
+
 struct PlatformState
 {
     HINSTANCE winInstance;
@@ -17,6 +20,19 @@ struct PlatformState
     // gl render context
     HGLRC hglrc;
 };
+
+inline uint8_t isRunning = 1;
+uint8_t GetRunningState() { return isRunning; }
+void SetRunningState(uint8_t set) { isRunning = set; }
+
+inline unsigned int windowWidth = GLREN_WINDOW_WIDTH;
+inline unsigned int windowHeight = GLREN_WINDOW_HEIGHT;
+
+unsigned int GetWindowWidth() { return windowWidth; }
+void SetWindowWidth(unsigned int width) { windowWidth = width; }
+
+unsigned int GetWindowHeight() { return windowHeight; }
+void SetWindowHeight(unsigned int height) { windowHeight = height; }
 
 inline double deltaTime;
 inline double elapsedTime = 0;
@@ -124,6 +140,18 @@ uint8_t PlatformStartup(const char* appName, int32_t x, int32_t y, uint32_t widt
     QueryPerformanceFrequency(&frequency);
     clockFrequency = 1.0 / static_cast<double>(frequency.QuadPart);// The quad part is just a 64 bit integer
     QueryPerformanceCounter(&startTime);
+
+    return 1;
+}
+
+uint8_t PlatformPumpMessages()
+{
+    MSG message;
+    while(PeekMessageA(&message, nullptr, 0, 0, PM_REMOVE))
+    {
+        TranslateMessage(&message);
+        DispatchMessage(&message);
+    }
 
     return 1;
 }
@@ -277,6 +305,10 @@ LRESULT CALLBACK Win32ProcessMessage(HWND winWindow, uint32_t msg, WPARAM w_para
             GetClientRect(winWindow, &rect);
             uint32_t width = rect.right - rect.left;
             uint32_t height = rect.bottom - rect.top;
+
+            windowWidth = width;
+            windowHeight = height;
+
             EventContext context;
             context.data.ui32[0] = width;
             context.data.ui32[1] = height;

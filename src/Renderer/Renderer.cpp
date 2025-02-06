@@ -11,24 +11,24 @@ Renderer::Renderer()
 	{
 		s_renderer = this;
 	}
+
 	else
 	{
 		std::cout << "The renderer is a singleton,";
 		std::cout << "It can only be initialized once\n";
 		__debugbreak();
 	}
-	m_entities.emplace_back(new SkyLight());
-	m_entities.emplace_back(new Flashlight
-	(Camera::GetCamera()->GetPosition(),
-	Camera::GetCamera()->GetDirection()));
+
+	m_entities.resize(2);
+
+	m_entities[0] = std::make_unique<SkyLight>();
+
+	m_entities[1] = std::make_unique<Flashlight>(Camera::GetCamera()->GetPosition(), Camera::GetCamera()->GetDirection());
 }
 
 Renderer::~Renderer()
 {
-	for (unsigned int i = 0; i < m_entities.size(); ++i)
-	{
-		delete m_entities[i];
-	}
+	
 }
 
 void Renderer::OnUpdate()
@@ -47,17 +47,27 @@ void Renderer::Draw()
 	}
 }
 
-void Renderer::AddLightCube(LightCube* cube)
+void Renderer::AddLightCube(const glm::vec3& position,
+	const glm::vec3& ambient,
+	const glm::vec3& diffuse,
+	const glm::vec3& specular,
+	float linear, float quadratic,
+	float constant)
 {
 	if (m_lightCubeAmount == 0)
 	{
 		m_firstPointLightTag = m_entities.size();
 	}
-	m_entities.emplace_back(cube);
+
+	m_entities.emplace_back(std::make_unique<LightCube>(position, ambient, diffuse, specular, linear, quadratic, constant));
+
 	m_lightCubeAmount++;
 }
 
-void Renderer::AddRotatingCube(RotatingCube* cube)
+void Renderer::AddRotatingCube(const char* innerTextureFilepath,
+	const char* outerTextureFilepath,
+	glm::vec3& pos,
+	float rotationSpeed)
 {
-	m_entities.emplace_back(cube);
+	m_entities.emplace_back(std::make_unique<RotatingCube>(innerTextureFilepath, outerTextureFilepath, pos, rotationSpeed));
 }

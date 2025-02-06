@@ -10,7 +10,7 @@ Camera::Camera(float speed, float sensitivity)
 {
 	m_lookAt = glm::lookAt(m_pos, m_pos + m_dir, m_up);
 	m_perspective = glm::perspective(glm::radians(65.0f),
-	1280.f / 768.f, 1.0f, 100.0f);
+	float(GetWindowWidth()) / float(GetWindowHeight()), 1.0f, 100.0f);
 
 	s_pCamera = this;
 }

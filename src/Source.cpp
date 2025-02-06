@@ -6,11 +6,6 @@
 
 #include <vector>
 
-static uint8_t isRunning = 1;
-
-static uint8_t GetRunningState() { return isRunning; }
-static void SetRunningState(uint8_t set) { isRunning = set; }
-
 int main()
 {
 	EventSystemState eventSystem;
@@ -19,35 +14,41 @@ int main()
 	PlatformStartup("GLren", 100, 100, 1280, 768);
 	CreateOpenglDrawContext();
 
+	RegisterDefaultEvents();
+
 	std::unique_ptr<Camera> camera = std::make_unique<Camera>(sizeof(Camera));
 
-	Renderer* renderer = new Renderer();
+	std::unique_ptr<Renderer> renderer = std::make_unique<Renderer>();
 	Shader::Init();
 
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(0.0f, 0.0f, 0.0f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(1.0f, -2.2f, -6.3f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(2.2f, -2.1, -3.4f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(-3.7f, -4.0f, -8.9f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(-2.7f, -2.0f, -7.2f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(-4.7f, 4.0f, -11.5f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(-1.7f, 2.4f, -6.9f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(2.2f, 2.5f, -13.1f)));
-	renderer->Append(new RotatingCube("Assets/Textures/Container.png",
-		"Assets/Textures/Container_specular.png",glm::vec3(0.7f, 3.9f, -6.3f)));
+	std::make_unique<RotatingCube>("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png", glm::vec3(0.0f, 0.0f, 0.0f));
 
-	renderer->AddLightCube(new LightCube());
-	renderer->AddLightCube(new LightCube(glm::vec3(8.0f, 6.0f, -4.0f)));
-	renderer->AddLightCube(new LightCube(glm::vec3(8.0f, 6.0f, -8.0f)));
-	renderer->AddLightCube(new LightCube(glm::vec3(-8.0f, 6.0f, -4.0f)));
-	renderer->AddLightCube(new LightCube(glm::vec3(-8.5f, 6.0f, -8.0f)));
+	renderer->ReserveEntities(15);
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(0.0f, 0.0f, 0.0f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(1.0f, -2.2f, -6.3f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(2.2f, -2.1, -3.4f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(-3.7f, -4.0f, -8.9f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(-2.7f, -2.0f, -7.2f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(-4.7f, 4.0f, -11.5f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(-1.7f, 2.4f, -6.9f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(2.2f, 2.5f, -13.1f));
+	renderer->AddRotatingCube("Assets/Textures/Container.png",
+		"Assets/Textures/Container_specular.png",glm::vec3(0.7f, 3.9f, -6.3f));
+
+	renderer->AddLightCube();
+	renderer->AddLightCube(glm::vec3(8.0f, 6.0f, -4.0f));
+	renderer->AddLightCube(glm::vec3(8.0f, 6.0f, -8.0f));
+	renderer->AddLightCube(glm::vec3(-8.0f, 6.0f, -4.0f));
+	renderer->AddLightCube(glm::vec3(-8.5f, 6.0f, -8.0f));
 
 	Material mat1(MaterialType::MT_BlackPlastic);
 	renderer->GetRotatingCube(2)->SetMaterial(mat1);
@@ -90,8 +91,11 @@ int main()
 
 	ClockSet();
 
-	while (isRunning)
+	while (GetRunningState())
 	{
+		if(!PlatformPumpMessages())
+			SetRunningState(0);
+
 		UpdateTime();
 
 		glClearColor(0.f, 0.4f, 0.6f, 1.f);
@@ -102,7 +106,7 @@ int main()
 		glClear(GL_DEPTH_BUFFER_BIT);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-		glViewport(0, 0, 1280, 768);
+		glViewport(0, 0, GetWindowWidth(), GetWindowHeight());
 
 		renderer->OnUpdate();
 		renderer->Draw();
@@ -110,6 +114,5 @@ int main()
 	}
 
 	PlatformShutdown();
-	delete renderer;
 	Shader::DeInit();
 }

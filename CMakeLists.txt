@@ -40,6 +40,7 @@ add_executable(GLren
                 src/Window/window.h
                 src/Window/Events.cpp 
                 src/Window/Events.h
+                src/Window/DefaultEvents.cpp
                 
                 src/Source.cpp)
 
@@ -76,6 +77,6 @@ add_custom_command(TARGET GLren POST_BUILD
 
 # Copy the assets folder over to the target directory
 add_custom_command(TARGET GLren POST_BUILD 
-    COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:GLren/Assets"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:GLren>/Assets"
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${PROJECT_BINARY_DIR}/Assets" "<TARGET_FILE_DIR:GLren>/Assets"
 )

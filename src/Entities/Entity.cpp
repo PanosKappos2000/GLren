@@ -1,7 +1,15 @@
 #include "entity.h"
 
 
+void Entity::OnUpdate()
+{
 
+}
+	
+void Entity::Draw()
+{
+	
+}
 
 
 

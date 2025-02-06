@@ -272,3 +272,19 @@
     void InputProcessButton(MouseButton button, uint8_t bPressed);
     void InputProcessMouseMove(int16_t x, int16_t y);
     void InputProcessMouseWheel(int8_t zDelta);
+
+
+
+
+    /*
+        Default events
+    */
+    void RegisterDefaultEvents();
+
+    uint8_t OnEvent(BlitEventType eventType, void* pSender, void* pListener, EventContext data);
+
+    uint8_t OnKeyPress(BlitEventType eventType, void* pSender, void* pListener, EventContext data);
+
+    uint8_t OnResize(BlitEventType eventType, void* pSender, void* pListener, EventContext data);
+
+    uint8_t OnMouseMove(BlitEventType eventType, void* pSender, void* pListener, EventContext data);
