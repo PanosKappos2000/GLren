@@ -11,10 +11,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#define ROTATING_CUBE_SHADER_FILEPATH				"res/Shaders/CubeShader.shader"
-#define LIGHT_CUBE_SHADER_FILEPATH					"res/Shaders/LightCubeShader.shader"
-#define MESH_SHADER_FILEPATH						"res/Shaders/BasicMesh.shader"
-#define VEGETATION_SHADER_FILEPATH					"res/Shaders/Vegetation.shader"
+#define ROTATING_CUBE_SHADER_FILEPATH				"Shaders/CubeShader.shader"
+#define LIGHT_CUBE_SHADER_FILEPATH					"Shaders/LightCubeShader.shader"
+#define MESH_SHADER_FILEPATH						"Shaders/BasicMesh.shader"
+#define VEGETATION_SHADER_FILEPATH					"Shaders/Vegetation.shader"
 
 enum class ShaderType
 {

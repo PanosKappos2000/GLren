@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Dev\CMake++\GLren\build\CMakeFiles\347146983399b3b3aea9c459f6c5b987\copy_glsl_shaders.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Dev\CMake++\GLren\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Dev\CMake++\GLren\build\CMakeFiles\copy_glsl_shaders" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{37E438D2-CB06-3CA1-AA35-CC377FA581F6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

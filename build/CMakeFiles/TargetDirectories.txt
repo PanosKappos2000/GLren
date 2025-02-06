@@ -1,3 +1,5 @@
 C:/Dev/CMake++/GLren/build/CMakeFiles/GLren.dir
+C:/Dev/CMake++/GLren/build/CMakeFiles/copy_glsl_shaders.dir
+C:/Dev/CMake++/GLren/build/CMakeFiles/copy_assets.dir
 C:/Dev/CMake++/GLren/build/CMakeFiles/ALL_BUILD.dir
 C:/Dev/CMake++/GLren/build/CMakeFiles/ZERO_CHECK.dir

@@ -16,6 +16,9 @@
     <ClCompile Include="C:\Dev\CMake++\GLren\src\Lighting\Flashlight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Dev\CMake++\GLren\src\Lighting\PointLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Dev\CMake++\GLren\src\Lighting\SkyLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -1,0 +1,15 @@
+﻿  Source.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:             _Ty=size_t
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56): warning C4244:         ]
+  (compiling source file '../src/Source.cpp')
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.42.34433\include\memory(3597,56):
+      the template instantiation context (the oldest one first) is
+          C:\Dev\CMake++\GLren\src\Source.cpp(22,40):
+          see reference to function template instantiation 'std::unique_ptr<Camera,std::default_delete<Camera>> std::make_unique<Camera,size_t,0>(size_t &&)' being compiled
+  
+  GLren.vcxproj -> C:\Dev\CMake++\GLren\build\Debug\GLren.exe
+  The filename, directory name, or volume label syntax is incorrect.
+  The system cannot find the file specified.

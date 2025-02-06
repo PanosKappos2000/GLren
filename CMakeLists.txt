@@ -18,6 +18,7 @@ add_executable(GLren
                 src/Lighting/DirectionalLight.h 
                 src/Lighting/Flashlight.cpp 
                 src/Lighting/FlashLight.h 
+                src/Lighting/PointLight.cpp
                 src/Lighting/PointLight.h
                 src/Lighting/SkyLight.cpp
                 src/Lighting/SkyLight.h 
@@ -48,8 +49,33 @@ target_include_directories(GLren PUBLIC
                         "${PROJECT_SOURCE_DIR}/ExternalVendors")
 
 target_link_directories(GLren PUBLIC
-                        "${PROJECT_SOURCE_DIR}/ExternalDependencies/Glew/lib/Release/x64")
+                        "${PROJECT_SOURCE_DIR}/ExternalVendors/Glew/lib/Release/x64")
 
 target_link_libraries(GLren PUBLIC  
                         glew32s
                         OpenGL32)
+
+
+# Copy the glsl shaders to the binary directory
+add_custom_target(copy_glsl_shaders
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_LIST_DIR}/Shaders ${CMAKE_CURRENT_BINARY_DIR}/Shaders
+)
+add_dependencies(GLren copy_glsl_shaders)
+
+# Copy assets like textures to the binary directory
+add_custom_target(copy_assets 
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_LIST_DIR}/Assets ${CMAKE_CURRENT_BINARY_DIR}/Assets
+)
+add_dependencies(GLren copy_assets)   
+
+# Copy the glsl shaders to the target directory
+add_custom_command(TARGET GLren POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:GLren>/Shaders"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${PROJECT_BINARY_DIR}/Shaders" "$<TARGET_FILE_DIR:GLren>/Shaders"
+)
+
+# Copy the assets folder over to the target directory
+add_custom_command(TARGET GLren POST_BUILD 
+    COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:GLren/Assets"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${PROJECT_BINARY_DIR}/Assets" "<TARGET_FILE_DIR:GLren>/Assets"
+)

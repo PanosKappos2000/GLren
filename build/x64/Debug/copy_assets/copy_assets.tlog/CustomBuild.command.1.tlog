@@ -1,0 +1,20 @@
+^C:\DEV\CMAKE++\GLREN\BUILD\CMAKEFILES\347146983399B3B3AEA9C459F6C5B987\COPY_ASSETS.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy_directory C:/Dev/CMake++/GLren/Assets C:/Dev/CMake++/GLren/build/Assets
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\DEV\CMAKE++\GLREN\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Dev/CMake++/GLren -BC:/Dev/CMake++/GLren/build --check-stamp-file C:/Dev/CMake++/GLren/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

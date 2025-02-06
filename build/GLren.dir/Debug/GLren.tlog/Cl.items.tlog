@@ -1,0 +1,14 @@
+C:\Dev\CMake++\GLren\src\Camera\camera.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\camera.obj
+C:\Dev\CMake++\GLren\src\Entities\cube.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\cube.obj
+C:\Dev\CMake++\GLren\src\Entities\Entity.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Entity.obj
+C:\Dev\CMake++\GLren\src\Lighting\DirectionalLight.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\DirectionalLight.obj
+C:\Dev\CMake++\GLren\src\Lighting\Flashlight.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Flashlight.obj
+C:\Dev\CMake++\GLren\src\Lighting\PointLight.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\PointLight.obj
+C:\Dev\CMake++\GLren\src\Lighting\SkyLight.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\SkyLight.obj
+C:\Dev\CMake++\GLren\src\Materials\Material.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Material.obj
+C:\Dev\CMake++\GLren\src\Renderer\Renderer.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Renderer.obj
+C:\Dev\CMake++\GLren\src\Shader\Shader.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Shader.obj
+C:\Dev\CMake++\GLren\src\Texture\texture.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\texture.obj
+C:\Dev\CMake++\GLren\src\Window\window.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\window.obj
+C:\Dev\CMake++\GLren\src\Window\Events.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Events.obj
+C:\Dev\CMake++\GLren\src\Source.cpp;C:\Dev\CMake++\GLren\build\GLren.dir\Debug\Source.obj
